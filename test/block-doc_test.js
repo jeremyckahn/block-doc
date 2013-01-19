@@ -1,4 +1,4 @@
-var block_doc = require('../lib/block-doc.js');
+var blockDoc = require('../lib/block-doc.js');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -20,15 +20,11 @@ var block_doc = require('../lib/block-doc.js');
     test.ifError(value)
 */
 
-exports['awesome'] = {
-  setUp: function(done) {
-    // setup here
-    done();
-  },
-  'no args': function(test) {
-    test.expect(1);
-    // tests here
-    test.equal(block_doc.awesome(), 'awesome', 'should be awesome.');
+exports.loader = {
+  'hello-world': function (test) {
+    var lines = blockDoc.loader.load('./fixtures/hello-world.js');
+    test.equal(lines instanceof Array, true,
+        'Loaded file is an Array.');
     test.done();
   }
 };
