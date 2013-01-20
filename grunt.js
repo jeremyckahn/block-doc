@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -7,7 +9,7 @@ module.exports = function(grunt) {
       files: ['test/*.js']
     },
     lint: {
-      files: ['grunt.js', 'lib/**/*.js', 'test/**/*.js']
+      files: ['grunt.js', 'lib/**/*.js', 'test/*.js']
     },
     watch: {
       files: '<config:lint.files>',
@@ -15,6 +17,8 @@ module.exports = function(grunt) {
     },
     jshint: {
       options: {
+        evil: true,
+        laxcomma: true,
         curly: true,
         eqeqeq: true,
         immed: true,

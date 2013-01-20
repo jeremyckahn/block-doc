@@ -1,3 +1,5 @@
+'use strict';
+
 var blockDoc = require('../lib/block-doc.js');
 
 /*
@@ -35,7 +37,7 @@ exports.loader = {
   ,'bad-input-file': function (test) {
     test.throws(
         function () {
-          blockDoc.loader.load('./test/fixtures/invalid.js')
+          blockDoc.loader.load('./test/fixtures/invalid.js');
         },
         'PARSE_ERROR: ./test/fixtures/invalid.js',
         'Invalid JavaScript file threw an exception.');
@@ -51,7 +53,7 @@ exports.parser = {
     var meta = blockDoc.parser.getMetadata(text);
 
     test.equals(meta.methods.length, 1,
-        'Parsed the single method.')
+        'Parsed the single method.');
 
     test.done();
   }
