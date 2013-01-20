@@ -48,12 +48,14 @@ exports.loader = {
 
 
 exports.parser = {
-  'parse-sum': function (test) {
-    var text = blockDoc.loader.load('./test/fixtures/sum-formal.js');
+  'parse-named-function': function (test) {
+    var text = blockDoc.loader.load('./test/fixtures/sum-named.js');
     var meta = blockDoc.parser.getMetadata(text);
 
     test.equals(meta.methods.length, 1,
-        'Parsed the single method.');
+        'Parsed single method.');
+    test.equals(meta.methods[0].name, 'sum',
+        'Parsed method name.');
 
     test.done();
   }
