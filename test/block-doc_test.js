@@ -43,3 +43,16 @@ exports.loader = {
     test.done();
   }
 };
+
+
+exports.parser = {
+  'parse-sum': function (test) {
+    var text = blockDoc.loader.load('./test/fixtures/sum-formal.js');
+    var meta = blockDoc.parser.getMetadata(text);
+
+    test.equals(meta.methods.length, 1,
+        'Parsed the single method.')
+
+    test.done();
+  }
+};
