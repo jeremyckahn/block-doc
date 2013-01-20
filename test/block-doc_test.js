@@ -22,14 +22,23 @@ var blockDoc = require('../lib/block-doc.js');
 
 exports.loader = {
   'hello-world': function (test) {
-    var lines = blockDoc.loader.load('./test/fixtures/hello-world.js');
+    var text = blockDoc.loader.load('./test/fixtures/hello-world.js');
 
-    test.equal(lines instanceof Array, true,
-        'Loaded file is an Array.');
-    test.equal(lines.length, 2,
-        'hello-world.js has one line.');
-    test.equal(lines[0], "'Hello, World!';",
+    test.equal(typeof text, 'string',
+        'Loaded file data is a string');
+    test.equal(text, "'Hello, World!';",
         'Read the contents of hello-world.js correctly.');
+
+    test.done();
+  }
+
+  ,'bad-input-file': function (test) {
+    test.throws(
+        function () {
+          blockDoc.loader.load('./test/fixtures/invalid.js')
+        },
+        'PARSE_ERROR: ./test/fixtures/invalid.js',
+        'Invalid JavaScript file threw an exception.');
 
     test.done();
   }
