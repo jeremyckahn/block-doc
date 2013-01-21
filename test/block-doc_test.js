@@ -60,8 +60,20 @@ exports.parser = {
     test.done();
   }
 
-  ,'parse-anonymous-function': function (test) {
+  ,'parse-anonymous-var-function': function (test) {
     var text = blockDoc.loader.load('./test/fixtures/sum-anonymous-var.js');
+    var meta = blockDoc.parser.getMetadata(text);
+
+    test.equals(meta.methods.length, 1,
+        'Parsed single method.');
+    test.equals(meta.methods[0].name, 'sum',
+        'Parsed method name.');
+
+    test.done();
+  }
+
+  ,'parse-anonymous-property-function': function (test) {
+    var text = blockDoc.loader.load('./test/fixtures/sum-anonymous-in-object.js');
     var meta = blockDoc.parser.getMetadata(text);
 
     test.equals(meta.methods.length, 1,
