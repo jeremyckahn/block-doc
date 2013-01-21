@@ -50,7 +50,7 @@ exports.loader = {
 exports.parser = {
   'parse-named-function': function (test) {
     var text = blockDoc.loader.load('./test/fixtures/sum-named.js');
-    var meta = blockDoc.parser.getMetadata(text);
+    var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta.length, 1,
         'Parsed single method.');
@@ -62,7 +62,7 @@ exports.parser = {
 
   ,'parse-anonymous-var-function': function (test) {
     var text = blockDoc.loader.load('./test/fixtures/sum-anonymous-var.js');
-    var meta = blockDoc.parser.getMetadata(text);
+    var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta.length, 1,
         'Parsed single method.');
@@ -75,7 +75,7 @@ exports.parser = {
   ,'parse-anonymous-property-function': function (test) {
     var text = blockDoc.loader.load(
         './test/fixtures/sum-anonymous-in-object.js');
-    var meta = blockDoc.parser.getMetadata(text);
+    var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta.length, 1,
         'Parsed single method.');
@@ -88,7 +88,7 @@ exports.parser = {
   ,'parse-multiple-mixed-function': function (test) {
     var text = blockDoc.loader.load(
         './test/fixtures/mixed-function-formats.js');
-    var meta = blockDoc.parser.getMetadata(text);
+    var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta.length, 3,
         'Parsed multiple methods.');
