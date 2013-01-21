@@ -101,4 +101,14 @@ exports.parser = {
 
     test.done();
   }
+
+  ,'parse-method-names': function (test) {
+    var text = blockDoc.loader.load('./test/fixtures/sum-named.js');
+    var meta = blockDoc.parser.parseMetadataList(text);
+
+    test.equals(meta[0].params.length, 2,
+        'Parsed the list of @params');
+
+    test.done();
+  }
 };
