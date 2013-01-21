@@ -52,9 +52,9 @@ exports.parser = {
     var text = blockDoc.loader.load('./test/fixtures/sum-named.js');
     var meta = blockDoc.parser.getMetadata(text);
 
-    test.equals(meta.methods.length, 1,
+    test.equals(meta.length, 1,
         'Parsed single method.');
-    test.equals(meta.methods[0].name, 'sum',
+    test.equals(meta[0].name, 'sum',
         'Parsed method name.');
 
     test.done();
@@ -64,9 +64,9 @@ exports.parser = {
     var text = blockDoc.loader.load('./test/fixtures/sum-anonymous-var.js');
     var meta = blockDoc.parser.getMetadata(text);
 
-    test.equals(meta.methods.length, 1,
+    test.equals(meta.length, 1,
         'Parsed single method.');
-    test.equals(meta.methods[0].name, 'sum',
+    test.equals(meta[0].name, 'sum',
         'Parsed method name.');
 
     test.done();
@@ -77,9 +77,9 @@ exports.parser = {
         './test/fixtures/sum-anonymous-in-object.js');
     var meta = blockDoc.parser.getMetadata(text);
 
-    test.equals(meta.methods.length, 1,
+    test.equals(meta.length, 1,
         'Parsed single method.');
-    test.equals(meta.methods[0].name, 'sum',
+    test.equals(meta[0].name, 'sum',
         'Parsed method name.');
 
     test.done();
@@ -90,13 +90,13 @@ exports.parser = {
         './test/fixtures/mixed-function-formats.js');
     var meta = blockDoc.parser.getMetadata(text);
 
-    test.equals(meta.methods.length, 3,
+    test.equals(meta.length, 3,
         'Parsed multiple methods.');
-    test.equals(meta.methods[0].name, 'sum',
+    test.equals(meta[0].name, 'sum',
         'Parsed first method name.');
-    test.equals(meta.methods[1].name, 'subtract',
+    test.equals(meta[1].name, 'subtract',
         'Parsed second method name.');
-    test.equals(meta.methods[2].name, 'multiply',
+    test.equals(meta[2].name, 'multiply',
         'Parsed third method name.');
 
     test.done();
