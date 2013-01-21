@@ -61,7 +61,7 @@ exports.parser = {
   }
 
   ,'parse-anonymous-function': function (test) {
-    var text = blockDoc.loader.load('./test/fixtures/sum-anonymous.js');
+    var text = blockDoc.loader.load('./test/fixtures/sum-anonymous-var.js');
     var meta = blockDoc.parser.getMetadata(text);
 
     test.equals(meta.methods.length, 1,
