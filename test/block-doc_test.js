@@ -138,4 +138,22 @@ exports.parser = {
 
     test.done();
   }
+
+  ,'parse-multiline-method-description': function (test) {
+    var text = blockDoc.loader.load(
+        './test/fixtures/multi-line-param-description.js');
+    var meta = blockDoc.parser.parseMetadataList(text);
+
+    test.equals(meta[0].params.length, 1,
+        'Parsed the list of @params');
+    test.equals(meta[0].params[0].type, 'null',
+        'Parsed the parameter type.');
+    test.equals(meta[0].params[0].name, 'nothing',
+        'Parsed the parameter name.');
+    test.equals(meta[0].params[0].description,
+        'This is nothing.  There\'s no good reason to pass a value here.',
+        'Parsed the parameter description.');
+
+    test.done();
+  }
 };
