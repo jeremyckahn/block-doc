@@ -85,6 +85,19 @@ exports.parser = {
     test.done();
   }
 
+  ,'parse-prototype-function': function (test) {
+    var text = blockDoc.loader.load(
+        './test/fixtures/sum-prototype.js');
+    var meta = blockDoc.parser.parseMetadataList(text);
+
+    test.equals(meta.length, 1,
+        'Parsed single method.');
+    test.equals(meta[0].name, 'Base.prototype.sum',
+        'Parsed method name.');
+
+    test.done();
+  }
+
   ,'parse-multiple-mixed-function': function (test) {
     var text = blockDoc.loader.load(
         './test/fixtures/mixed-function-formats.js');
