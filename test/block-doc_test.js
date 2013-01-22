@@ -129,6 +129,12 @@ exports.parser = {
         'Parsed the first parameter name.');
     test.equals(meta[0].params[1].name, 'num2',
         'Parsed the second parameter name.');
+    test.equals(meta[0].params[0].description,
+        'The first number to add.',
+        'Parsed the first parameter description.');
+    test.equals(meta[0].params[1].description,
+        'The second number to add.',
+        'Parsed the second parameter description.');
 
     test.done();
   }
