@@ -121,6 +121,10 @@ exports.parser = {
 
     test.equals(meta[0].params.length, 2,
         'Parsed the list of @params');
+    test.equals(meta[0].params[0].name, 'num1',
+        'Parsed the first parameter name.');
+    test.equals(meta[0].params[1].name, 'num2',
+        'Parsed the second parameter name.');
 
     test.done();
   }
