@@ -115,7 +115,16 @@ exports.parser = {
     test.done();
   }
 
-  ,'parse-method-names': function (test) {
+  ,'parse-method-description': function (test) {
+    var text = blockDoc.loader.load('./test/fixtures/sum-named.js');
+    var meta = blockDoc.parser.parseMetadataList(text);
+
+    test.equals(meta[0].description, 'A function that adds two numbers.',
+        'Parsed the description.');
+    test.done();
+  }
+
+  ,'parse-param-names': function (test) {
     var text = blockDoc.loader.load('./test/fixtures/sum-named.js');
     var meta = blockDoc.parser.parseMetadataList(text);
 
