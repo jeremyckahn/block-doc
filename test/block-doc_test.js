@@ -115,11 +115,22 @@ exports.parser = {
     test.done();
   }
 
-  ,'parse-method-description': function (test) {
+  ,'parse-function-description': function (test) {
     var text = blockDoc.loader.load('./test/fixtures/sum-named.js');
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta[0].description, 'A function that adds two numbers.',
+        'Parsed the description.');
+    test.done();
+  }
+
+  ,'parse-multi-line-function-description': function (test) {
+    var text = blockDoc.loader.load(
+        './test/fixtures/multi-line-function-description.js');
+    var meta = blockDoc.parser.parseMetadataList(text);
+
+    test.equals(meta[0].description,
+        'Hi. I am a multiline function description. Have a nice day!',
         'Parsed the description.');
     test.done();
   }
