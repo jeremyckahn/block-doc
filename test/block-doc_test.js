@@ -181,7 +181,7 @@ exports.parser = {
     var text = blockDoc.loader.load(
         './test/fixtures/return-no-description.js');
     var meta = blockDoc.parser.parseMetadataList(text);
-console.log(meta[0].return)
+
     test.equals(meta[0].return.type, 'number',
         'Parsed the return type.');
     test.equals(meta[0].return.description, '',
@@ -199,6 +199,20 @@ console.log(meta[0].return)
         'Parsed the return type.');
     test.equals(meta[0].return.description,
         'The sum of num1 and num2.',
+        'Parsed the return description.');
+
+    test.done();
+  }
+
+  ,'parse-return-with-multi-line-description': function (test) {
+    var text = blockDoc.loader.load(
+        './test/fixtures/return-multi-line-description.js');
+    var meta = blockDoc.parser.parseMetadataList(text);
+
+    test.equals(meta[0].return.type, 'null',
+        'Parsed the return type.');
+    test.equals(meta[0].return.description,
+        'This method returns null. How very exciting!',
         'Parsed the return description.');
 
     test.done();
