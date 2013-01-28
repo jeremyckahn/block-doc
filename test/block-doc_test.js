@@ -181,9 +181,25 @@ exports.parser = {
     var text = blockDoc.loader.load(
         './test/fixtures/return-no-description.js');
     var meta = blockDoc.parser.parseMetadataList(text);
+console.log(meta[0].return)
+    test.equals(meta[0].return.type, 'number',
+        'Parsed the return type.');
+    test.equals(meta[0].return.description, '',
+        'Parsed the return description.');
+
+    test.done();
+  }
+
+  ,'parse-return-with-description': function (test) {
+    var text = blockDoc.loader.load(
+        './test/fixtures/return-description.js');
+    var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta[0].return.type, 'number',
         'Parsed the return type.');
+    test.equals(meta[0].return.description,
+        'The sum of num1 and num2.',
+        'Parsed the return description.');
 
     test.done();
   }
