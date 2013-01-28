@@ -135,7 +135,7 @@ exports.parser = {
     test.done();
   }
 
-  ,'parse-param-names': function (test) {
+  ,'parse-params': function (test) {
     var text = blockDoc.loader.load('./test/fixtures/sum-named.js');
     var meta = blockDoc.parser.parseMetadataList(text);
 
@@ -213,6 +213,36 @@ exports.parser = {
         'Parsed the return type.');
     test.equals(meta[0].return.description,
         'This method returns null. How very exciting!',
+        'Parsed the return description.');
+
+    test.done();
+  }
+
+  ,'parse-block-with-all-annotations': function (test) {
+    var text = blockDoc.loader.load(
+        './test/fixtures/all-annotations.js');
+    var meta = blockDoc.parser.parseMetadataList(text);
+
+    test.equals(meta[0].params.length, 2,
+        'Parsed the list of @params');
+    test.equals(meta[0].params[0].type, 'number',
+        'Parsed the first parameter type.');
+    test.equals(meta[0].params[1].type, 'number',
+        'Parsed the second parameter type.');
+    test.equals(meta[0].params[0].name, 'num1',
+        'Parsed the first parameter name.');
+    test.equals(meta[0].params[1].name, 'num2',
+        'Parsed the second parameter name.');
+    test.equals(meta[0].params[0].description,
+        'The first number to add.',
+        'Parsed the first parameter description.');
+    test.equals(meta[0].params[1].description,
+        'The second number to add.',
+        'Parsed the second parameter description.');
+    test.equals(meta[0].return.type, 'number',
+        'Parsed the return type.');
+    test.equals(meta[0].return.description,
+        'The sum of num1 and num2.',
         'Parsed the return description.');
 
     test.done();
