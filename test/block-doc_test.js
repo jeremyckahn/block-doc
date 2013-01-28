@@ -176,4 +176,15 @@ exports.parser = {
 
     test.done();
   }
+
+  ,'parse-return-no-description': function (test) {
+    var text = blockDoc.loader.load(
+        './test/fixtures/return-no-description.js');
+    var meta = blockDoc.parser.parseMetadataList(text);
+
+    test.equals(meta[0].return.type, 'number',
+        'Parsed the return type.');
+
+    test.done();
+  }
 };
