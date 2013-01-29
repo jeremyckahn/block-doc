@@ -31,5 +31,8 @@
   "devDependencies": {
     "grunt": "~0.3.17"
   },
+  "dependencies": {
+    "mustache": "*"
+  }
   "keywords": []
 }
