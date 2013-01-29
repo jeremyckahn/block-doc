@@ -182,9 +182,9 @@ exports.parser = {
         './test/fixtures/return-no-description.js');
     var meta = blockDoc.parser.parseMetadataList(text);
 
-    test.equals(meta[0].return.type, 'number',
+    test.equals(meta[0]['return'].type, 'number',
         'Parsed the return type.');
-    test.equals(meta[0].return.description, '',
+    test.equals(meta[0]['return'].description, '',
         'Parsed the return description.');
 
     test.done();
@@ -195,9 +195,9 @@ exports.parser = {
         './test/fixtures/return-description.js');
     var meta = blockDoc.parser.parseMetadataList(text);
 
-    test.equals(meta[0].return.type, 'number',
+    test.equals(meta[0]['return'].type, 'number',
         'Parsed the return type.');
-    test.equals(meta[0].return.description,
+    test.equals(meta[0]['return'].description,
         'The sum of num1 and num2.',
         'Parsed the return description.');
 
@@ -209,9 +209,9 @@ exports.parser = {
         './test/fixtures/return-multi-line-description.js');
     var meta = blockDoc.parser.parseMetadataList(text);
 
-    test.equals(meta[0].return.type, 'null',
+    test.equals(meta[0]['return'].type, 'null',
         'Parsed the return type.');
-    test.equals(meta[0].return.description,
+    test.equals(meta[0]['return'].description,
         'This method returns null. How very exciting!',
         'Parsed the return description.');
 
@@ -239,11 +239,23 @@ exports.parser = {
     test.equals(meta[0].params[1].description,
         'The second number to add.',
         'Parsed the second parameter description.');
-    test.equals(meta[0].return.type, 'number',
+    test.equals(meta[0]['return'].type, 'number',
         'Parsed the return type.');
-    test.equals(meta[0].return.description,
+    test.equals(meta[0]['return'].description,
         'The sum of num1 and num2.',
         'Parsed the return description.');
+
+    test.done();
+  }
+};
+
+
+exports.htmlGenerator = {
+  'generate-blank-page': function (test) {
+    var generatedHtml = blockDoc.htmlGenerator.generate({}, './template');
+
+    test.equals(generatedHtml.match(/<!DOCTYPE html>/).length, 1,
+        'Generated an HTML page.');
 
     test.done();
   }
