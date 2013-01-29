@@ -258,5 +258,16 @@ exports.htmlGenerator = {
         'Generated an HTML page.');
 
     test.done();
+  },
+
+  'generate-title': function (test) {
+    var generatedHtml = blockDoc.htmlGenerator.generate('./template', {}, {
+      'title': 'foobar'
+    });
+
+    test.equals(generatedHtml.match(/<title>foobar<\/title>/).length, 1,
+        'Generated a custom title.');
+
+    test.done();
   }
 };
