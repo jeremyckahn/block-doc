@@ -252,7 +252,7 @@ exports.parser = {
 
 exports.htmlGenerator = {
   'generate-blank-page': function (test) {
-    var generatedHtml = blockDoc.htmlGenerator.generate({}, './template');
+    var generatedHtml = blockDoc.htmlGenerator.generate('./template', {});
 
     test.equals(generatedHtml.match(/<!DOCTYPE html>/).length, 1,
         'Generated an HTML page.');
