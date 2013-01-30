@@ -4,10 +4,20 @@
   <title>{{title}}</title>
 </head>
 <body>
+
 {{#if name}}
   <h1>{{name}}</h1>
 {{else}}
   <h1>API Reference</h1>
 {{/if}}
+
+  <ul class="api-listing">
+  {{#each meta}}
+    <li class="api">
+      <h2>{{name}}</h2>
+    </li>
+  {{/each}}
+  </ul>
+
 </body>
 </html>
