@@ -27,7 +27,7 @@ exports.loader = {
     var text = blockDoc.loader.load('./test/fixtures/hello-world.js');
 
     test.equal(typeof text, 'string',
-        'Loaded file data is a string');
+        'Loads file data is a string');
     test.equal(text, "'Hello, World!';",
         'Read the contents of hello-world.js correctly.');
 
@@ -53,9 +53,9 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta.length, 1,
-        'Parsed single method.');
+        'Parses single method.');
     test.equals(meta[0].name, 'sum',
-        'Parsed method name.');
+        'Parses method name.');
 
     test.done();
   }
@@ -65,9 +65,9 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta.length, 1,
-        'Parsed single method.');
+        'Parses single method.');
     test.equals(meta[0].name, 'sum',
-        'Parsed method name.');
+        'Parses method name.');
 
     test.done();
   }
@@ -78,9 +78,9 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta.length, 1,
-        'Parsed single method.');
+        'Parses single method.');
     test.equals(meta[0].name, 'sum',
-        'Parsed method name.');
+        'Parses method name.');
 
     test.done();
   }
@@ -91,9 +91,9 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta.length, 1,
-        'Parsed single method.');
+        'Parses single method.');
     test.equals(meta[0].name, 'Base.prototype.sum',
-        'Parsed method name.');
+        'Parses method name.');
 
     test.done();
   }
@@ -104,13 +104,13 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta.length, 3,
-        'Parsed multiple methods.');
+        'Parses multiple methods.');
     test.equals(meta[0].name, 'sum',
-        'Parsed first method name.');
+        'Parses first method name.');
     test.equals(meta[1].name, 'subtract',
-        'Parsed second method name.');
+        'Parses second method name.');
     test.equals(meta[2].name, 'multiply',
-        'Parsed third method name.');
+        'Parses third method name.');
 
     test.done();
   }
@@ -120,7 +120,7 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta[0].description, 'A function that adds two numbers.',
-        'Parsed the description.');
+        'Parses the description.');
     test.done();
   }
 
@@ -131,7 +131,7 @@ exports.parser = {
 
     test.equals(meta[0].description,
         'Hi. I am a multiline function description. Have a nice day!',
-        'Parsed the description.');
+        'Parses the description.');
     test.done();
   }
 
@@ -140,21 +140,21 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta[0].params.length, 2,
-        'Parsed the list of @params');
+        'Parses the list of @params');
     test.equals(meta[0].params[0].type, 'number',
-        'Parsed the first parameter type.');
+        'Parses the first parameter type.');
     test.equals(meta[0].params[1].type, 'number',
-        'Parsed the second parameter type.');
+        'Parses the second parameter type.');
     test.equals(meta[0].params[0].name, 'num1',
-        'Parsed the first parameter name.');
+        'Parses the first parameter name.');
     test.equals(meta[0].params[1].name, 'num2',
-        'Parsed the second parameter name.');
+        'Parses the second parameter name.');
     test.equals(meta[0].params[0].description,
         'The first number to add.',
-        'Parsed the first parameter description.');
+        'Parses the first parameter description.');
     test.equals(meta[0].params[1].description,
         'The second number to add.',
-        'Parsed the second parameter description.');
+        'Parses the second parameter description.');
 
     test.done();
   }
@@ -165,14 +165,14 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta[0].params.length, 1,
-        'Parsed the list of @params');
+        'Parses the list of @params');
     test.equals(meta[0].params[0].type, 'null',
-        'Parsed the parameter type.');
+        'Parses the parameter type.');
     test.equals(meta[0].params[0].name, 'nothing',
-        'Parsed the parameter name.');
+        'Parses the parameter name.');
     test.equals(meta[0].params[0].description,
         'This is nothing.  There\'s no good reason to pass a value here.',
-        'Parsed the parameter description.');
+        'Parses the parameter description.');
 
     test.done();
   }
@@ -183,9 +183,9 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta[0]['return'].type, 'number',
-        'Parsed the return type.');
+        'Parses the return type.');
     test.equals(meta[0]['return'].description, '',
-        'Parsed the return description.');
+        'Parses the return description.');
 
     test.done();
   }
@@ -196,10 +196,10 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta[0]['return'].type, 'number',
-        'Parsed the return type.');
+        'Parses the return type.');
     test.equals(meta[0]['return'].description,
         'The sum of num1 and num2.',
-        'Parsed the return description.');
+        'Parses the return description.');
 
     test.done();
   }
@@ -210,10 +210,10 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta[0]['return'].type, 'null',
-        'Parsed the return type.');
+        'Parses the return type.');
     test.equals(meta[0]['return'].description,
         'This method returns null. How very exciting!',
-        'Parsed the return description.');
+        'Parses the return description.');
 
     test.done();
   }
@@ -224,26 +224,26 @@ exports.parser = {
     var meta = blockDoc.parser.parseMetadataList(text);
 
     test.equals(meta[0].params.length, 2,
-        'Parsed the list of @params');
+        'Parses the list of @params');
     test.equals(meta[0].params[0].type, 'number',
-        'Parsed the first parameter type.');
+        'Parses the first parameter type.');
     test.equals(meta[0].params[1].type, 'number',
-        'Parsed the second parameter type.');
+        'Parses the second parameter type.');
     test.equals(meta[0].params[0].name, 'num1',
-        'Parsed the first parameter name.');
+        'Parses the first parameter name.');
     test.equals(meta[0].params[1].name, 'num2',
-        'Parsed the second parameter name.');
+        'Parses the second parameter name.');
     test.equals(meta[0].params[0].description,
         'The first number to add.',
-        'Parsed the first parameter description.');
+        'Parses the first parameter description.');
     test.equals(meta[0].params[1].description,
         'The second number to add.',
-        'Parsed the second parameter description.');
+        'Parses the second parameter description.');
     test.equals(meta[0]['return'].type, 'number',
-        'Parsed the return type.');
+        'Parses the return type.');
     test.equals(meta[0]['return'].description,
         'The sum of num1 and num2.',
-        'Parsed the return description.');
+        'Parses the return description.');
 
     test.done();
   }
@@ -255,7 +255,7 @@ exports.htmlGenerator = {
     var generatedHtml = blockDoc.htmlGenerator.generate('./template', {});
 
     test.equals(generatedHtml.match(/<!DOCTYPE html>/).length, 1,
-        'Generated an HTML page.');
+        'Generates an HTML page.');
 
     test.done();
   }
@@ -266,7 +266,7 @@ exports.htmlGenerator = {
     });
 
     test.equals(generatedHtml.match(/<title>foobar<\/title>/).length, 1,
-        'Generated a custom title.');
+        'Generates a custom title.');
 
     test.done();
   }
@@ -276,7 +276,7 @@ exports.htmlGenerator = {
 
     test.equals(
         generatedHtml.match(/<title>Generated by JSBlockDoc<\/title>/).length,
-        1, 'Generated the default title.');
+        1, 'Generates the default title.');
 
     test.done();
   }
@@ -287,7 +287,7 @@ exports.htmlGenerator = {
     });
 
     test.equals(generatedHtml.match(/<h1>foobar<\/h1>/).length, 1,
-        'Generated a custom top-level header.');
+        'Generates a custom top-level header.');
     test.equals(generatedHtml.match(/<h1>/g).length, 1,
         'Only renders one <h1>.');
 
@@ -298,7 +298,7 @@ exports.htmlGenerator = {
     var generatedHtml = blockDoc.htmlGenerator.generate('./template', {});
 
     test.equals(generatedHtml.match(/<h1>API Reference<\/h1>/).length, 1,
-        'Generated the default top-level header.');
+        'Generates the default top-level header.');
     test.equals(generatedHtml.match(/<h1>/g).length, 1,
         'Only renders one <h1>.');
 
