@@ -1,5 +1,6 @@
 'use strict';
 
+var fs = require('fs');
 var $ = require('jquery');
 var blockDoc = require('../lib/block-doc.js');
 
@@ -376,6 +377,13 @@ exports.htmlGenerator = {
 exports.exporter = {
 
   'copy-asset-directories': function (test) {
+    blockDoc.exporter.exportSite('', './template', TMP_EXPORT_DIRECTORY);
+
+    var rootExists = fs.existsSync(TMP_EXPORT_DIRECTORY);
+
+    test.ok(rootExists,
+        'Exported root directory exists.');
+
     test.done();
   }
 };
