@@ -3,6 +3,16 @@
 var $ = require('jquery');
 var blockDoc = require('../lib/block-doc.js');
 
+//  test helpers
+//
+
+function sumMeta () {
+  var text = blockDoc.loader.load(
+      './test/fixtures/all-annotations.js');
+  return blockDoc.parser.parseMetadataList(text);
+}
+
+
 /*
   ======== A Handy Little Nodeunit Reference ========
   https://github.com/caolan/nodeunit
@@ -252,16 +262,6 @@ exports.parser = {
 };
 
 
-// htmlGenerator test helpers
-//
-
-function sumMeta () {
-  var text = blockDoc.loader.load(
-      './test/fixtures/all-annotations.js');
-  return blockDoc.parser.parseMetadataList(text);
-}
-
-
 exports.htmlGenerator = {
   'generate-blank-page': function (test) {
     var generatedHtml = blockDoc.htmlGenerator.generate('./template', {});
@@ -366,6 +366,14 @@ exports.htmlGenerator = {
         'The sum of num1 and num2.',
         'Renders return description.');
 
+    test.done();
+  }
+};
+
+
+exports.exporter = {
+
+  'copy-asset-directories': function (test) {
     test.done();
   }
 };
