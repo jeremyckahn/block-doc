@@ -322,8 +322,19 @@ exports.htmlGenerator = {
         blockDoc.htmlGenerator.generate('./template', sumMeta());
     var $dom = $(generatedHtml);
 
-    test.equals( $dom.find('.api h2').text(), 'sum',
+    test.equals($dom.find('.api h2').text(), 'sum',
         'Renders API header for function name.');
+
+    test.done();
+  }
+
+  ,'generate-method-params': function (test) {
+    var generatedHtml =
+        blockDoc.htmlGenerator.generate('./template', sumMeta());
+    var $dom = $(generatedHtml);
+
+    test.equals($dom.find('ul.params li').length, 2,
+        'Renders parameter containers.');
 
     test.done();
   }
