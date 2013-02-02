@@ -17,7 +17,11 @@
       <h2>{{name}}</h2>
       <ul class="params">
       {{#each params}}
-        <li></li>
+        <li>
+          <h3 class="name">{{name}}</h3>
+          <h4 class="type">{{type}}</h4>
+          <p class="description">{{description}}</p>
+        </li>
       {{/each}}
       </ul>
     </li>

@@ -333,8 +333,22 @@ exports.htmlGenerator = {
         blockDoc.htmlGenerator.generate('./template', sumMeta());
     var $dom = $(generatedHtml);
 
-    test.equals($dom.find('ul.params li').length, 2,
+    test.equals($dom.find('ul.params > li').length, 2,
         'Renders parameter containers.');
+    test.equals($dom.find('ul.params > li:eq(0) .name').text(), 'num1',
+        'Renders first parameter name.');
+    test.equals($dom.find('ul.params > li:eq(1) .name').text(), 'num2',
+        'Renders second parameter name.');
+    test.equals($dom.find('ul.params > li:eq(0) .description').text(),
+        'The first number to add.',
+        'Renders first parameter description.');
+    test.equals($dom.find('ul.params > li:eq(1) .description').text(),
+        'The second number to add.',
+        'Renders second parameter description.');
+    test.equals($dom.find('ul.params > li:eq(0) .type').text(), 'number',
+        'Renders first parameter type.');
+    test.equals($dom.find('ul.params > li:eq(1) .type').text(), 'number',
+        'Renders second parameter type.');
 
     test.done();
   }
