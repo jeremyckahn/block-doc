@@ -3,6 +3,8 @@
 var $ = require('jquery');
 var blockDoc = require('../lib/block-doc.js');
 
+var TMP_EXPORT_DIRECTORY = '/tmp/js-doc-block.generated/';
+
 //  test helpers
 //
 
