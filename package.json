@@ -33,7 +33,8 @@
     "jquery": "*"
   },
   "dependencies": {
-    "handlebars": "*"
+    "handlebars": "*",
+    "underscore": "*"
   },
   "keywords": []
 }
