@@ -352,4 +352,20 @@ exports.htmlGenerator = {
 
     test.done();
   }
+
+  ,'generate-return-meta': function (test) {
+    var generatedHtml =
+        blockDoc.htmlGenerator.generate('./template', sumMeta());
+    var $dom = $(generatedHtml);
+
+    test.equals($dom.find('li.api:eq(0) .return').length, 1,
+        'Renders return container.');
+    test.equals($dom.find('li.api:eq(0) .return .type').text(), 'number',
+        'Renders return type.');
+    test.equals($dom.find('li.api:eq(0) .return .description').text(),
+        'The sum of num1 and num2.',
+        'Renders return description.');
+
+    test.done();
+  }
 };

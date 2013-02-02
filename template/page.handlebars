@@ -24,6 +24,14 @@
         </li>
       {{/each}}
       </ul>
+      {{#if return}}
+        <div class="return">
+          <h3 class="type">{{return.type}}</h3>
+        {{#if return.description}}
+          <p class="description">{{return.description}}</p>
+        {{/if}}
+        </div>
+      {{/if}}
     </li>
   {{/each}}
   </ul>
