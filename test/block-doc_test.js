@@ -413,4 +413,19 @@ exports.exporter = {
     helper.exporterTeardown();
     test.done();
   }
+
+  ,'generates-index-file': function (test) {
+    var generatedHtml =
+        blockDoc.htmlGenerator.generate('./template', helper.sumMeta());
+    blockDoc.exporter.exportSite(generatedHtml, './template/asset/',
+        TMP_EXPORT_DIRECTORY);
+
+    var indexExists = fs.existsSync(TMP_EXPORT_DIRECTORY + 'index.html');
+
+    test.ok(indexExists,
+        'Exported index.html file exists.');
+
+    helper.exporterTeardown();
+    test.done();
+  }
 };
