@@ -40,5 +40,9 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', 'lint test');
+  grunt.registerTask('doc', function () {
+    var docBlock = require('./lib/block-doc');
+    docBlock.document(['./lib/block-doc'], './doc');
+  });
 
 };
