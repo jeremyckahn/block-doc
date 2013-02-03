@@ -2,18 +2,26 @@
 
 var fs = require('fs');
 var $ = require('jquery');
+var wrench = require('wrench');
+var util = require('util');
 var blockDoc = require('../lib/block-doc.js');
-
-var TMP_EXPORT_DIRECTORY = '/tmp/js-doc-block.generated/';
 
 //  test helpers
 //
+var TMP_EXPORT_DIRECTORY = '/tmp/js-doc-block.generated/';
 
-function sumMeta () {
-  var text = blockDoc.loader.load(
-      './test/fixtures/all-annotations.js');
-  return blockDoc.parser.parseMetadataList(text);
-}
+var helper = {
+
+  'sumMeta': function () {
+    var text = blockDoc.loader.load(
+        './test/fixtures/all-annotations.js');
+    return blockDoc.parser.parseMetadataList(text);
+  }
+
+  ,'exporterTeardown': function () {
+    wrench.rmdirSyncRecursive(TMP_EXPORT_DIRECTORY);
+  }
+};
 
 
 /*
@@ -35,6 +43,14 @@ function sumMeta () {
     test.doesNotThrow(block, [error], [message])
     test.ifError(value)
 */
+
+
+// Do a little preemptive cleanup to prevent tests from dying spuriously.
+try {
+  wrench.rmdirSyncRecursive(TMP_EXPORT_DIRECTORY);
+} catch (ex) {
+
+}
 
 
 exports.loader = {
@@ -322,7 +338,7 @@ exports.htmlGenerator = {
 
   ,'generate-method-header': function (test) {
     var generatedHtml =
-        blockDoc.htmlGenerator.generate('./template', sumMeta());
+        blockDoc.htmlGenerator.generate('./template', helper.sumMeta());
     var $dom = $(generatedHtml);
 
     test.equals($dom.find('.api h2').text(), 'sum',
@@ -333,7 +349,7 @@ exports.htmlGenerator = {
 
   ,'generate-method-params': function (test) {
     var generatedHtml =
-        blockDoc.htmlGenerator.generate('./template', sumMeta());
+        blockDoc.htmlGenerator.generate('./template', helper.sumMeta());
     var $dom = $(generatedHtml);
 
     test.equals($dom.find('ul.params > li').length, 2,
@@ -358,7 +374,7 @@ exports.htmlGenerator = {
 
   ,'generate-return-meta': function (test) {
     var generatedHtml =
-        blockDoc.htmlGenerator.generate('./template', sumMeta());
+        blockDoc.htmlGenerator.generate('./template', helper.sumMeta());
     var $dom = $(generatedHtml);
 
     test.equals($dom.find('li.api:eq(0) .return').length, 1,
@@ -384,6 +400,7 @@ exports.exporter = {
     test.ok(rootExists,
         'Exported root directory exists.');
 
+    helper.exporterTeardown();
     test.done();
   }
 };

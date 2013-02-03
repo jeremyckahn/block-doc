@@ -34,7 +34,8 @@
   },
   "dependencies": {
     "handlebars": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "wrench": "*"
   },
   "keywords": []
 }
