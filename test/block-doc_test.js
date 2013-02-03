@@ -393,12 +393,16 @@ exports.htmlGenerator = {
 exports.exporter = {
 
   'copy-asset-directories': function (test) {
-    blockDoc.exporter.exportSite('', './template', TMP_EXPORT_DIRECTORY);
+    blockDoc.exporter.exportSite('', './template/asset/',
+        TMP_EXPORT_DIRECTORY);
 
     var rootExists = fs.existsSync(TMP_EXPORT_DIRECTORY);
+    var assetsExist = fs.existsSync(TMP_EXPORT_DIRECTORY + 'asset');
 
     test.ok(rootExists,
         'Exported root directory exists.');
+    test.ok(assetsExist,
+        'Exported asset directory exists.');
 
     helper.exporterTeardown();
     test.done();
