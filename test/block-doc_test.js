@@ -398,11 +398,17 @@ exports.exporter = {
 
     var rootExists = fs.existsSync(TMP_EXPORT_DIRECTORY);
     var assetsExist = fs.existsSync(TMP_EXPORT_DIRECTORY + 'asset');
+    var cssDirExists = fs.existsSync(TMP_EXPORT_DIRECTORY + 'asset/css');
+    var jsDirExists = fs.existsSync(TMP_EXPORT_DIRECTORY + 'asset/js');
 
     test.ok(rootExists,
         'Exported root directory exists.');
     test.ok(assetsExist,
         'Exported asset directory exists.');
+    test.ok(cssDirExists,
+        'Exported CSS directory exists.');
+    test.ok(jsDirExists,
+        'Exported JavaScript directory exists.');
 
     helper.exporterTeardown();
     test.done();
